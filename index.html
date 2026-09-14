@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Registration — Scan Station</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="mark"></span>
+    <h1>Employee Registration</h1>
+    <span>Ansell Textiles Lanka</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html" class="active">Scan Station</a>
+    <a href="dashboard.html">Dashboard &amp; Charts</a>
+  </div>
+  <div class="station-pill">
+    <span class="dot-live"></span>
+    <span>Station <b id="stationLabel">—</b></span>
+    <button class="btn" id="changeStationBtn" style="padding:4px 10px; font-size:11px;">Change</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="stats">
+    <div class="stat" style="--stat-color:var(--teal)">
+      <div class="num" id="statTotal">0</div>
+      <div class="lbl">Total scanned</div>
+    </div>
+    <div class="stat" style="--stat-color:var(--teal)">
+      <div class="num" id="statRegistered">0</div>
+      <div class="lbl">Registered</div>
+    </div>
+    <div class="stat" style="--stat-color:var(--male)">
+      <div class="num" id="statMale">0</div>
+      <div class="lbl">Male</div>
+    </div>
+    <div class="stat" style="--stat-color:var(--female)">
+      <div class="num" id="statFemale">0</div>
+      <div class="lbl">Female</div>
+    </div>
+    <div class="stat" style="--stat-color:var(--amber)">
+      <div class="num" id="statDuplicate">0</div>
+      <div class="lbl">Duplicates</div>
+    </div>
+    <div class="stat" style="--stat-color:var(--coral)">
+      <div class="num" id="statMismatch">0</div>
+      <div class="lbl">Mismatches</div>
+    </div>
+  </div>
+
+  <div class="scan-panel">
+    <div class="eyebrow">Scan an employee ID card to register</div>
+    <div class="scan-row">
+      <input class="scan-input" id="scanInput" type="text" placeholder="Waiting for barcode scan…" autocomplete="off" autofocus>
+      <button class="btn primary" id="manualBtn">Register</button>
+    </div>
+    <div class="feedback" id="feedback">
+      <span class="fb-main">Ready — point the scanner at a card.</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>All records read</h2>
+      <span class="meta" id="tableMeta">0 records</span>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Emp No</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Station</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="logBody"></tbody>
+      </table>
+      <div class="empty-state" id="emptyState">No cards scanned yet.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

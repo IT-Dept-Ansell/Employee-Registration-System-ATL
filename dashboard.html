@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Registration — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="mark"></span>
+    <h1>Employee Registration</h1>
+    <span>Ansell Textiles Lanka</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Scan Station</a>
+    <a href="dashboard.html" class="active">Dashboard &amp; Charts</a>
+  </div>
+  <div class="station-pill">
+    <span class="dot-live"></span>
+    <span id="lastUpdated">Loading…</span>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="stats">
+    <div class="stat" style="--stat-color:var(--teal)">
+      <div class="num" id="statTotal">0</div>
+      <div class="lbl">Total scanned</div>
+    </div>
+    <div class="stat" style="--stat-color:var(--teal)">
+      <div class="num" id="statRegistered">0</div>
+      <div class="lbl">Registered</div>
+    </div>
+    <div class="stat" style="--stat-color:var(--male)">
+      <div class="num" id="statMale">0</div>
+      <div class="lbl">Male</div>
+    </div>
+    <div class="stat" style="--stat-color:var(--female)">
+      <div class="num" id="statFemale">0</div>
+      <div class="lbl">Female</div>
+    </div>
+    <div class="stat" style="--stat-color:var(--amber)">
+      <div class="num" id="statDuplicate">0</div>
+      <div class="lbl">Duplicates</div>
+    </div>
+    <div class="stat" style="--stat-color:var(--coral)">
+      <div class="num" id="statMismatch">0</div>
+      <div class="lbl">Mismatches</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>Registered vs. duplicate vs. mismatch vs. inactive</h3>
+      <canvas id="chartResults"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Male / female split (registered)</h3>
+      <canvas id="chartGender"></canvas>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="chart-card">
+      <h3>Scans by station — confirms no station is missing or double-counted</h3>
+      <canvas id="chartStation"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Scans by hour</h3>
+      <canvas id="chartHour"></canvas>
+    </div>
+  </div>
+
+  <div class="admin-panel">
+    <div class="grp">
+      <div>
+        <div style="font-weight:700; font-size:13px; margin-bottom:4px;">Master database</div>
+        <div class="desc" id="masterCount">— employees loaded</div>
+      </div>
+    </div>
+    <div class="grp">
+      <input type="file" id="csvFile" accept=".csv">
+      <button class="btn primary" id="uploadBtn">Upload master CSV</button>
+      <button class="btn" id="exportBtn">Export scan log (CSV)</button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>Full scan log</h2>
+      <span class="meta" id="tableMeta">0 records</span>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th><th>Emp No</th><th>Name</th><th>Gender</th><th>Station</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="logBody"></tbody>
+      </table>
+      <div class="empty-state" id="emptyState">No cards scanned yet.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="config.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>
