@@ -92,18 +92,6 @@
     </div>
   </div>
 
-  <div class="admin-panel">
-    <div class="grp">
-      <div>
-        <div style="font-weight:700; font-size:13px; margin-bottom:4px; color: #d32f2f;">Admin Tools</div>
-        <div class="desc">Clear all employees from log (requires password)</div>
-      </div>
-    </div>
-    <div class="grp">
-      <button class="btn" id="clearLogBtn" style="background-color: #d32f2f; color: white;">Clear Log</button>
-    </div>
-  </div>
-
   <div class="panel">
     <div class="panel-head">
       <h2>Full scan log</h2>
@@ -125,19 +113,6 @@
 </div>
 
 <div class="toast" id="toast"></div>
-
-<!-- Admin password modal -->
-<div id="adminModal" class="modal" style="display:none;">
-  <div class="modal-content">
-    <h2>Admin Password Required</h2>
-    <p>Enter the admin password to clear the log:</p>
-    <input type="password" id="adminPassword" placeholder="Enter password" style="width:100%; padding:8px; margin:12px 0; border:1px solid #ccc; border-radius:4px;">
-    <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:16px;">
-      <button id="adminCancel" class="btn" style="background-color:#999;">Cancel</button>
-      <button id="adminConfirm" class="btn primary" style="background-color:#d32f2f;">Clear Log</button>
-    </div>
-  </div>
-</div>
 
 <script src="config.js"></script>
 <script src="dashboard.js"></script>
