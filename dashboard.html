@@ -8,6 +8,85 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  .modal-content h2 {
+    margin: 0 0 12px 0;
+    color: #d32f2f;
+  }
+  .modal-content p {
+    margin: 0 0 12px 0;
+    color: #666;
+  }
+  .modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  .modal-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 16px;
+  }
+  .btn-cancel {
+    padding: 8px 16px;
+    background-color: #999;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .btn-cancel:hover {
+    background-color: #777;
+  }
+  .btn-danger {
+    padding: 8px 16px;
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .btn-danger:hover {
+    background-color: #b71c1c;
+  }
+  .admin-section {
+    background-color: #fff3e0;
+    border: 2px solid #d32f2f;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px 0;
+  }
+  .admin-section .btn-danger {
+    width: 100%;
+  }
+</style>
 </head>
 <body>
 
@@ -92,6 +171,12 @@
     </div>
   </div>
 
+  <div class="admin-section">
+    <div style="font-weight:700; font-size:14px; margin-bottom:12px; color: #d32f2f;">🔒 Admin Tools</div>
+    <div style="font-size:13px; color: #666; margin-bottom:12px;">Clear all employees from scan log (requires password)</div>
+    <button class="btn-danger" id="clearLogBtn">Clear Log</button>
+  </div>
+
   <div class="panel">
     <div class="panel-head">
       <h2>Full scan log</h2>
@@ -113,6 +198,19 @@
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- Admin password modal -->
+<div id="adminModal" class="modal">
+  <div class="modal-content">
+    <h2>⚠️ Clear Scan Log</h2>
+    <p>This will permanently delete all employee scan records. Enter the admin password to continue:</p>
+    <input type="password" id="adminPassword" placeholder="Enter admin password" autocomplete="off">
+    <div class="modal-buttons">
+      <button id="adminCancel" class="btn-cancel">Cancel</button>
+      <button id="adminConfirm" class="btn-danger">Clear All Records</button>
+    </div>
+  </div>
+</div>
 
 <script src="config.js"></script>
 <script src="dashboard.js"></script>
