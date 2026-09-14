@@ -3,7 +3,7 @@
    Apps Script Editor -> Deploy -> New deployment -> Web app -> copy the
    URL ending in /exec and paste it below, between the quotes.
    ========================================================================== */
-const APP_URL = "https://script.google.com/macros/s/AKfycbxbjOL2JHArlEJefVTyDxczT9vsO5GT5Dab_2gT7gBsQDu1mXHXS5QaFSH5wRIH68oQ/exec";
+const APP_URL = "no api url";
 
 /* How often each station pulls the shared log to pick up scans made at
    the other 11 stations. 4 seconds keeps the counts feeling live without
